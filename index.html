@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PearlCare Dental — Modern Dentistry</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ivory: #FAF7F2;
+    --cream: #F2ECE3;
+    --sage: #7A9E87;
+    --sage-dark: #5A7B66;
+    --sage-light: #C2D9CA;
+    --charcoal: #2A2A2A;
+    --mid: #6B6B6B;
+    --light: #A8A8A8;
+    --white: #FFFFFF;
+    --accent: #C8956A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--ivory);
+    color: var(--charcoal);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 60px;
+    background: rgba(250,247,242,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(122,158,135,0.15);
+    transition: all 0.3s ease;
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 500;
+    color: var(--charcoal);
+    letter-spacing: 0.02em;
+  }
+
+  .nav-logo span { color: var(--sage); }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--mid);
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--sage-dark); }
+
+  .nav-cta {
+    background: var(--sage);
+    color: white !important;
+    padding: 10px 24px;
+    border-radius: 100px;
+    font-weight: 500 !important;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--sage-dark) !important; color: white !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 120px 60px 80px;
+    gap: 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -200px;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(122,158,135,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--sage-light);
+    color: var(--sage-dark);
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 28px;
+    letter-spacing: 0.04em;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 7px; height: 7px;
+    background: var(--sage);
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 6vw, 80px);
+    font-weight: 400;
+    line-height: 1.08;
+    color: var(--charcoal);
+    margin-bottom: 24px;
+    letter-spacing: -0.01em;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--sage);
+  }
+
+  .hero p {
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--mid);
+    max-width: 480px;
+    margin-bottom: 44px;
+    font-weight: 300;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .btn-primary {
+    background: var(--charcoal);
+    color: white;
+    padding: 15px 36px;
+    border-radius: 100px;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 0.02em;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(42,42,42,0.2);
+  }
+
+  .btn-outline {
+    border: 1.5px solid rgba(42,42,42,0.2);
+    color: var(--charcoal);
+    padding: 14px 32px;
+    border-radius: 100px;
+    font-size: 15px;
+    font-weight: 400;
+    text-decoration: none;
+    transition: all 0.2s;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--sage);
+    color: var(--sage-dark);
+    background: rgba(122,158,135,0.05);
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 40px;
+    margin-top: 52px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(42,42,42,0.1);
+  }
+
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 500;
+    color: var(--charcoal);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 13px;
+    color: var(--light);
+    margin-top: 4px;
+    letter-spacing: 0.04em;
+  }
+
+  /* HERO VISUAL */
+  .hero-visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-card {
+    background: white;
+    border-radius: 32px;
+    overflow: hidden;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.08), 0 10px 30px rgba(0,0,0,0.04);
+    width: 100%;
+    max-width: 480px;
+    animation: float 5s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%,100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .hero-card-img {
+    height: 300px;
+    background: linear-gradient(135deg, #C2D9CA 0%, #7A9E87 50%, #5A7B66 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-card-img::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: 0; right: 0;
+    height: 60px;
+    background: white;
+    border-radius: 30px 30px 0 0;
+  }
+
+  .hero-card-body {
+    padding: 24px 28px 28px;
+  }
+
+  .hero-card-body h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  .hero-card-body p {
+    font-size: 14px;
+    color: var(--mid);
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .mini-booking {
+    background: var(--cream);
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .mini-booking-info { font-size: 13px; color: var(--mid); }
+  .mini-booking-info strong { color: var(--charcoal); display: block; font-size: 14px; }
+
+  .mini-check {
+    width: 36px; height: 36px;
+    background: var(--sage);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .floating-pill {
+    position: absolute;
+    background: white;
+    border-radius: 100px;
+    padding: 10px 18px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    animation: float 4s ease-in-out infinite;
+  }
+
+  .floating-pill.top-left {
+    top: 20px; left: -20px;
+    animation-delay: -2s;
+  }
+
+  .floating-pill.bottom-right {
+    bottom: 60px; right: -20px;
+    animation-delay: -1s;
+  }
+
+  .pill-icon { font-size: 18px; }
+
+  /* SERVICES */
+  section { padding: 100px 60px; }
+
+  .section-label {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 52px);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--charcoal);
+    margin-bottom: 16px;
+  }
+
+  .section-sub {
+    font-size: 16px;
+    color: var(--mid);
+    font-weight: 300;
+    max-width: 520px;
+    line-height: 1.7;
+  }
+
+  #services { background: var(--white); }
+
+  .services-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 60px;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .service-card {
+    background: var(--ivory);
+    border-radius: 24px;
+    padding: 36px;
+    border: 1px solid rgba(0,0,0,0.05);
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--sage), var(--sage-light));
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+    background: white;
+  }
+
+  .service-card:hover::before { opacity: 1; }
+
+  .service-icon {
+    width: 56px; height: 56px;
+    background: var(--sage-light);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: 24px;
+    transition: background 0.3s;
+  }
+
+  .service-card:hover .service-icon {
+    background: var(--sage);
+  }
+
+  .service-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    color: var(--charcoal);
+  }
+
+  .service-card p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--mid);
+    font-weight: 300;
+    margin-bottom: 20px;
+  }
+
+  .service-price {
+    font-size: 13px;
+    color: var(--sage-dark);
+    font-weight: 500;
+    letter-spacing: 0.03em;
+  }
+
+  /* WHY US */
+  #why {
+    background: var(--charcoal);
+    color: white;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  #why .section-title { color: white; }
+  #why .section-label { color: var(--sage-light); }
+  #why .section-sub { color: rgba(255,255,255,0.55); }
+
+  .features-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 40px;
+  }
+
+  .feature-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .feature-dot {
+    width: 10px; height: 10px;
+    background: var(--sage);
+    border-radius: 50%;
+    margin-top: 6px;
+    flex-shrink: 0;
+  }
+
+  .feature-item h4 {
+    font-size: 15px;
+    font-weight: 500;
+    color: white;
+    margin-bottom: 4px;
+  }
+
+  .feature-item p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  .why-visual {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .why-card {
+    background: rgba(255,255,255,0.06);
+    border-radius: 20px;
+    padding: 28px;
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: background 0.3s;
+  }
+
+  .why-card:hover { background: rgba(255,255,255,0.1); }
+
+  .why-card:first-child {
+    grid-column: span 2;
+    background: rgba(122,158,135,0.2);
+    border-color: rgba(122,158,135,0.3);
+  }
+
+  .why-card-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 44px;
+    font-weight: 400;
+    color: var(--sage-light);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .why-card-label {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.05em;
+  }
+
+  /* TEAM */
+  #team { background: var(--cream); }
+
+  .team-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .team-header .section-sub { margin: 0 auto; }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+
+  .team-card {
+    background: white;
+    border-radius: 24px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .team-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+  }
+
+  .team-card-img {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 60px;
+  }
+
+  .team-card:nth-child(1) .team-card-img { background: linear-gradient(135deg, #C2D9CA, #7A9E87); }
+  .team-card:nth-child(2) .team-card-img { background: linear-gradient(135deg, #D9C8BA, #C8956A); }
+  .team-card:nth-child(3) .team-card-img { background: linear-gradient(135deg, #BAC8D9, #6A88C8); }
+
+  .team-card-body { padding: 24px; }
+
+  .team-card-body h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+
+  .team-card-body .role {
+    font-size: 13px;
+    color: var(--sage);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    margin-bottom: 10px;
+  }
+
+  .team-card-body p {
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  /* BOOKING */
+  #booking {
+    background: white;
+  }
+
+  .booking-container {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .booking-info h2 { margin-bottom: 20px; }
+
+  .booking-contact {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .contact-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .contact-icon {
+    width: 44px; height: 44px;
+    background: var(--sage-light);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .contact-item h4 {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 2px;
+  }
+
+  .contact-item p {
+    font-size: 13px;
+    color: var(--mid);
+    font-weight: 300;
+  }
+
+  /* FORM */
+  .booking-form {
+    background: var(--ivory);
+    border-radius: 28px;
+    padding: 44px;
+    border: 1px solid rgba(0,0,0,0.05);
+  }
+
+  .booking-form h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  .booking-form > p {
+    font-size: 14px;
+    color: var(--mid);
+    margin-bottom: 32px;
+    font-weight: 300;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--charcoal);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 13px 16px;
+    border: 1.5px solid rgba(0,0,0,0.1);
+    border-radius: 12px;
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    background: white;
+    color: var(--charcoal);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+    appearance: none;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--sage);
+    box-shadow: 0 0 0 3px rgba(122,158,135,0.12);
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 90px;
+  }
+
+  .form-group select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B6B6B' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+    cursor: pointer;
+  }
+
+  .form-submit {
+    width: 100%;
+    padding: 15px;
+    background: var(--sage);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-size: 15px;
+    font-weight: 500;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    letter-spacing: 0.02em;
+    margin-top: 8px;
+  }
+
+  .form-submit:hover {
+    background: var(--sage-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(90,123,102,0.3);
+  }
+
+  .success-msg {
+    display: none;
+    text-align: center;
+    padding: 20px;
+    background: rgba(122,158,135,0.1);
+    border-radius: 12px;
+    border: 1px solid rgba(122,158,135,0.3);
+    color: var(--sage-dark);
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 16px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--charcoal);
+    color: rgba(255,255,255,0.5);
+    padding: 60px 60px 40px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 40px;
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    color: white;
+    margin-bottom: 12px;
+  }
+
+  .footer-logo span { color: var(--sage-light); }
+
+  .footer-desc {
+    font-size: 13px;
+    line-height: 1.7;
+    font-weight: 300;
+    max-width: 240px;
+  }
+
+  .footer-col h4 {
+    font-size: 13px;
+    font-weight: 500;
+    color: white;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-col ul li {
+    font-size: 13px;
+    cursor: pointer;
+    transition: color 0.2s;
+    font-weight: 300;
+  }
+
+  .footer-col ul li:hover { color: var(--sage-light); }
+
+  .footer-bottom {
+    grid-column: span 4;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-up {
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards;
+  }
+
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.2s; }
+  .delay-3 { animation-delay: 0.3s; }
+  .delay-4 { animation-delay: 0.4s; }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    nav { padding: 18px 30px; }
+    .hero, section, footer { padding-left: 30px; padding-right: 30px; }
+    .services-grid, .team-grid { grid-template-columns: 1fr 1fr; }
+    #why { grid-template-columns: 1fr; }
+    .booking-container { grid-template-columns: 1fr; }
+    footer { grid-template-columns: 1fr 1fr; }
+    .footer-bottom { grid-column: span 2; }
+  }
+
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; padding-top: 100px; }
+    .hero-visual { display: none; }
+    .nav-links { display: none; }
+    .services-grid, .team-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { grid-template-columns: 1fr; }
+    .footer-bottom { grid-column: 1; flex-direction: column; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Pearl<span>Care</span></div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#team">Our Team</a></li>
+    <li><a href="#booking" class="nav-cta">Book Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <div class="hero-badge fade-up">Trusted by 3,000+ patients</div>
+    <h1 class="fade-up delay-1">Your <em>smile</em> is our finest work.</h1>
+    <p class="fade-up delay-2">Modern dental care rooted in comfort and precision. From routine cleanings to complete smile transformations — we're here for every step.</p>
+    <div class="hero-actions fade-up delay-3">
+      <a href="#booking" class="btn-primary">Book Appointment</a>
+      <a href="#services" class="btn-outline">Explore Services</a>
+    </div>
+    <div class="hero-stats fade-up delay-4">
+      <div>
+        <div class="stat-num">14+</div>
+        <div class="stat-label">Years of care</div>
+      </div>
+      <div>
+        <div class="stat-num">3k+</div>
+        <div class="stat-label">Happy patients</div>
+      </div>
+      <div>
+        <div class="stat-num">8</div>
+        <div class="stat-label">Specialist doctors</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="floating-pill top-left">
+      <span class="pill-icon">🦷</span>
+      <span>Next opening: Today</span>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-img">🦷</div>
+      <div class="hero-card-body">
+        <h3>Exceptional dental care</h3>
+        <p>Using the latest technology for comfortable, precise treatments in a calm, welcoming environment.</p>
+        <div class="mini-booking">
+          <div class="mini-booking-info">
+            <strong>Dr. Sarah Mills</strong>
+            Tomorrow, 10:00 AM
+          </div>
+          <div class="mini-check">✓</div>
+        </div>
+      </div>
+    </div>
+    <div class="floating-pill bottom-right">
+      <span class="pill-icon">⭐</span>
+      <span>4.9 star rating</span>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-header">
+    <div>
+      <div class="section-label">What we offer</div>
+      <h2 class="section-title">Comprehensive dental<br>services for all ages</h2>
+    </div>
+    <p class="section-sub">From your first visit to advanced cosmetic work, our team handles every aspect of your oral health.</p>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🔬</div>
+      <h3>Dental Exam & Cleaning</h3>
+      <p>Thorough preventive care including full oral exam, professional scaling, and personalized hygiene guidance to keep your smile healthy long-term.</p>
+      <div class="service-price">From PKR 2,000</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">✨</div>
+      <h3>Teeth Whitening</h3>
+      <p>In-office and take-home whitening treatments tailored to your sensitivity levels, delivering noticeably brighter results in a single session.</p>
+      <div class="service-price">From PKR 8,000</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🦷</div>
+      <h3>Dental Implants</h3>
+      <p>Permanent tooth replacement using titanium implants for a natural look and feel. A lasting solution that preserves your jawbone structure.</p>
+      <div class="service-price">From PKR 35,000</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">😁</div>
+      <h3>Orthodontics & Braces</h3>
+      <p>Traditional braces and clear aligner options for teens and adults. Achieve a perfectly aligned smile at any age.</p>
+      <div class="service-price">From PKR 50,000</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🛡️</div>
+      <h3>Root Canal Treatment</h3>
+      <p>Pain-free root canal therapy using modern rotary techniques and anaesthesia, saving your natural tooth with minimal discomfort.</p>
+      <div class="service-price">From PKR 12,000</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">👶</div>
+      <h3>Children's Dentistry</h3>
+      <p>Gentle, fun dental care designed specifically for kids — building positive habits early in a comfortable, child-friendly environment.</p>
+      <div class="service-price">From PKR 1,500</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div>
+    <div class="section-label">Why PearlCare</div>
+    <h2 class="section-title">Dentistry that respects your time & comfort</h2>
+    <p class="section-sub">We've reimagined the dental experience from the ground up — no unnecessary waits, no hidden costs, no fear.</p>
+    <div class="features-list">
+      <div class="feature-item">
+        <div class="feature-dot"></div>
+        <div>
+          <h4>Same-day emergency appointments</h4>
+          <p>We keep emergency slots open daily so you're never left waiting in pain.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-dot"></div>
+        <div>
+          <h4>Digital X-rays & 3D imaging</h4>
+          <p>Precise diagnosis with 80% less radiation than traditional X-rays.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-dot"></div>
+        <div>
+          <h4>Transparent pricing</h4>
+          <p>Clear cost estimates before every procedure — no surprises at checkout.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-dot"></div>
+        <div>
+          <h4>Anxiety-free care</h4>
+          <p>Sedation options and a calm environment designed for nervous patients.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="why-visual">
+    <div class="why-card">
+      <div class="why-card-num">98%</div>
+      <div class="why-card-label">Patient satisfaction rate</div>
+    </div>
+    <div class="why-card">
+      <div class="why-card-num">14+</div>
+      <div class="why-card-label">Years in practice</div>
+    </div>
+    <div class="why-card">
+      <div class="why-card-num">3k+</div>
+      <div class="why-card-label">Smiles transformed</div>
+    </div>
+    <div class="why-card">
+      <div class="why-card-num">8</div>
+      <div class="why-card-label">Certified specialists</div>
+    </div>
+    <div class="why-card">
+      <div class="why-card-num">24h</div>
+      <div class="why-card-label">Online booking</div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="team-header">
+    <div class="section-label">Our doctors</div>
+    <h2 class="section-title">Meet the experts<br>behind your smile</h2>
+    <p class="section-sub">Board-certified specialists with decades of combined experience in general and cosmetic dentistry.</p>
+  </div>
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-card-img">👨‍⚕️</div>
+      <div class="team-card-body">
+        <h3>Dr. Ahmed Raza</h3>
+        <div class="role">Lead Dentist & Oral Surgeon</div>
+        <p>15 years of experience in complex restorations and oral surgery. Trained at King Edward Medical University with a fellowship in implantology.</p>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-card-img">👩‍⚕️</div>
+      <div class="team-card-body">
+        <h3>Dr. Sarah Malik</h3>
+        <div class="role">Cosmetic & Orthodontic Specialist</div>
+        <p>Expert in smile makeovers, veneers, and Invisalign. Known for her patient-first approach and eye for aesthetic detail.</p>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-card-img">👨‍⚕️</div>
+      <div class="team-card-body">
+        <h3>Dr. Usman Tariq</h3>
+        <div class="role">Pediatric & Preventive Dentist</div>
+        <p>Dedicated to children's oral health for over 10 years. His gentle, playful approach makes kids genuinely enjoy their dental visits.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking">
+  <div class="booking-container">
+    <div class="booking-info">
+      <div class="section-label">Book an appointment</div>
+      <h2 class="section-title">Ready for a healthier, brighter smile?</h2>
+      <p class="section-sub">Schedule your visit online in under 2 minutes. We'll confirm within 1 hour during clinic hours.</p>
+      <div class="booking-contact">
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <h4>Clinic Address</h4>
+            <p>12 Garden Town, Lahore, Punjab, Pakistan</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <h4>Phone</h4>
+            <p>+92 300 123 4567</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🕒</div>
+          <div>
+            <h4>Hours</h4>
+            <p>Mon–Sat: 9:00 AM – 8:00 PM<br>Sunday: 10:00 AM – 4:00 PM</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div>
+            <h4>Email</h4>
+            <p>appointments@pearlcare.com.pk</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="booking-form">
+      <h3>Book Your Appointment</h3>
+      <p>Fill in the details below and we'll get back to you shortly.</p>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" id="firstName" placeholder="Ali">
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" id="lastName" placeholder="Khan">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" id="phone" placeholder="+92 300 000 0000">
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" id="email" placeholder="you@email.com">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Preferred Date</label>
+          <input type="date" id="apptDate">
+        </div>
+        <div class="form-group">
+          <label>Preferred Time</label>
+          <select id="apptTime">
+            <option value="">Select a time</option>
+            <option>09:00 AM</option>
+            <option>10:00 AM</option>
+            <option>11:00 AM</option>
+            <option>12:00 PM</option>
+            <option>02:00 PM</option>
+            <option>03:00 PM</option>
+            <option>04:00 PM</option>
+            <option>05:00 PM</option>
+            <option>06:00 PM</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Service Required</label>
+        <select id="service">
+          <option value="">Select a service</option>
+          <option>Dental Exam & Cleaning</option>
+          <option>Teeth Whitening</option>
+          <option>Dental Implants</option>
+          <option>Orthodontics & Braces</option>
+          <option>Root Canal Treatment</option>
+          <option>Children's Dentistry</option>
+          <option>Emergency / Pain Relief</option>
+          <option>Other / Consultation</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Additional Notes (optional)</label>
+        <textarea id="notes" placeholder="Any specific concerns, allergies, or questions..."></textarea>
+      </div>
+
+      <button class="form-submit" onclick="handleBooking()">Confirm Appointment →</button>
+
+      <div class="success-msg" id="successMsg">
+        ✅ Appointment request received! We'll confirm via phone or email within 1 hour.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">Pearl<span>Care</span> Dental</div>
+    <p class="footer-desc">Modern, compassionate dental care for the whole family. Your comfort and confidence are our priority.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Services</h4>
+    <ul>
+      <li>Dental Cleaning</li>
+      <li>Teeth Whitening</li>
+      <li>Implants</li>
+      <li>Orthodontics</li>
+      <li>Root Canal</li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Clinic</h4>
+    <ul>
+      <li>About Us</li>
+      <li>Our Team</li>
+      <li>Testimonials</li>
+      <li>Blog</li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Contact</h4>
+    <ul>
+      <li>12 Garden Town, Lahore</li>
+      <li>+92 300 123 4567</li>
+      <li>appointments@pearlcare.com.pk</li>
+      <li>Mon–Sat: 9 AM – 8 PM</li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 PearlCare Dental. All rights reserved.</span>
+    <span>Built with care ♥</span>
+  </div>
+</footer>
+
+<script>
+  // ── Config: update this to your backend URL in production ──────────────────
+  const API_URL = 'http://localhost:3001';
+
+  // Set min date to today
+  const dateInput = document.getElementById('apptDate');
+  const today = new Date().toISOString().split('T')[0];
+  dateInput.setAttribute('min', today);
+
+  async function handleBooking() {
+    const firstName = document.getElementById('firstName').value.trim();
+    const lastName  = document.getElementById('lastName').value.trim();
+    const phone     = document.getElementById('phone').value.trim();
+    const email     = document.getElementById('email').value.trim();
+    const date      = document.getElementById('apptDate').value;
+    const time      = document.getElementById('apptTime').value;
+    const service   = document.getElementById('service').value;
+    const notes     = document.getElementById('notes').value.trim();
+
+    if (!firstName || !lastName || !phone || !email || !date || !time || !service) {
+      showFormError('Please fill in all required fields.');
+      return;
+    }
+
+    const btn = document.querySelector('.form-submit');
+    btn.textContent = 'Booking...';
+    btn.disabled = true;
+    clearFormError();
+
+    try {
+      const res = await fetch(`${API_URL}/api/appointments`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          first_name: firstName,
+          last_name:  lastName,
+          phone, email,
+          appt_date: date,
+          appt_time: time,
+          service, notes,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        btn.style.display = 'none';
+        document.getElementById('successMsg').style.display = 'block';
+      } else {
+        const msg = data.errors ? data.errors.join(' ') : (data.error || 'Booking failed. Please try again.');
+        showFormError(msg);
+        btn.textContent = 'Confirm Appointment →';
+        btn.disabled = false;
+      }
+    } catch (err) {
+      showFormError('Could not connect to the server. Please try again or call us directly.');
+      btn.textContent = 'Confirm Appointment →';
+      btn.disabled = false;
+    }
+  }
+
+  function showFormError(msg) {
+    let el = document.getElementById('formError');
+    if (!el) {
+      el = document.createElement('div');
+      el.id = 'formError';
+      el.style.cssText = 'background:rgba(200,100,100,0.1);border:1px solid rgba(200,100,100,0.3);color:#c86464;padding:10px 14px;border-radius:10px;font-size:13px;margin-top:12px;';
+      document.querySelector('.form-submit').after(el);
+    }
+    el.textContent = msg;
+    el.style.display = 'block';
+  }
+
+  function clearFormError() {
+    const el = document.getElementById('formError');
+    if (el) el.style.display = 'none';
+  }
+
+  // Smooth nav highlight on scroll
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 50) {
+      nav.style.boxShadow = '0 4px 30px rgba(0,0,0,0.06)';
+    } else {
+      nav.style.boxShadow = 'none';
+    }
+  });
+
+  // Intersection observer for fade-in on cards
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.service-card, .team-card, .why-card').forEach(card => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(20px)';
+    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(card);
+  });
+</script>
+</body>
+</html>
